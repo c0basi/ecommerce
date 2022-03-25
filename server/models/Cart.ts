@@ -7,11 +7,6 @@ interface CartItem {
 interface Product {
 	userId: string;
 	products: Array<CartItem>;
-	img: string;
-	categories: Array<String>;
-	size: string;
-	color: string;
-	price: number;
 }
 
 const CartSchema = new Schema<Product>(
