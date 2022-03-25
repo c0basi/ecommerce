@@ -34,11 +34,12 @@ export const loginUser = async (req: Request, res: Response) => {
 		}
 		const hashedPassword =
 			user && CryptoJS.AES.decrypt(user.password, passwordhash);
-		const password = hashedPassword?.toString(CryptoJS.enc.Utf8);
-		if (password !== req.body.password) {
+		const originalPassword = hashedPassword?.toString(CryptoJS.enc.Utf8);
+		if (originalPassword !== req.body.password) {
 			res.status(401).json('Wroong crendentials');
 		} else {
-			res.status(200).json(user);
+			const { password, ...others } = user.toJSON();
+			res.status(200).json(others);
 		}
 	} catch (err) {
 		res.status(500).json(err);
