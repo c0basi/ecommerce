@@ -6,7 +6,7 @@ interface User extends Document {
 	isAdmin: Boolean;
 }
 
-const UserSchema = new Schema<User>(
+const UserSchema = new Schema<User, Model<User>>(
 	{
 		username: { type: String, required: true, unique: true },
 		email: { type: String, required: true, unique: true },
