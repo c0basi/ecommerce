@@ -1,0 +1,87 @@
+.login-container {
+	background: linear-gradient(
+			rgba(255, 255, 255, 0.5),
+			rgba(255, 255, 255, 0.5)
+		),
+		url('../assets/login-bald.webp');
+	// background-image: url('../assets/bald-lady.jpeg');
+	background-position: center;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&__wrapper {
+		width: calc(10vw + 23%);
+		padding: 2rem;
+		background-color: white;
+
+		&--title {
+			font-size: 2.4rem;
+			font-weight: 400;
+			margin: 1.4rem 0 0.5rem 0;
+		}
+
+		&--form {
+			display: flex;
+			flex-direction: column;
+
+			input {
+				flex: 1;
+				padding: 1rem;
+				font-size: 1.6rem;
+				min-width: 40%;
+				margin: 1rem 0;
+			}
+
+			button {
+				padding: 1.5rem 2rem;
+				border: none;
+				background-color: teal;
+				color: white;
+				width: 40%;
+				margin: 1rem 0;
+				cursor: pointer;
+				&:hover {
+					background-color: #198c8c;
+					color: white;
+				}
+			}
+
+			a {
+				color: black;
+				font-size: 1.6rem;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.login-container__wrapper {
+		width: 40%;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.login-container {
+		background-position: 65% 60%;
+	}
+	.login-container__wrapper {
+		width: 55%;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.login-container__wrapper {
+		width: 63%;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.login-container {
+		background-position: 65% 60%;
+	}
+	.login-container__wrapper {
+		width: 75%;
+	}
+}
