@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import router from './routes/auth';
 import 'dotenv/config';
 
 const app: express.Application = express();
@@ -12,6 +13,8 @@ mongoose
 	.catch((err) => console.log(err));
 
 app.use(express.json());
+
+app.use('/test', router);
 
 app.get('/api', function (req: express.Request, res: express.Response) {
 	res.send('Hello World!');

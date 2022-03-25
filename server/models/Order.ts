@@ -1,18 +1,18 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema, Types } from 'mongoose';
 
 interface CartItem {
 	productId: string;
 	quantity: number;
 }
-interface Product {
+interface Order {
 	userId: string;
-	products: Array<CartItem>;
+	products: Types.Array<CartItem>;
 	amount: number;
 	address: object;
 	status: string;
 }
 
-const OrderSchema = new Schema<Product>(
+const OrderSchema = new Schema<Order>(
 	{
 		userId: { type: String, required: true },
 		products: [
@@ -33,4 +33,4 @@ const OrderSchema = new Schema<Product>(
 	{ timestamps: true }
 );
 
-export default mongoose.model('User', OrderSchema);
+export default mongoose.model<Order>('Order', OrderSchema);

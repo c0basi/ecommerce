@@ -1,5 +1,5 @@
-import mongoose, { Schema } from 'mongoose';
-interface User {
+import mongoose, { Schema, Document, Model } from 'mongoose';
+interface User extends Document {
 	username: string;
 	email: string;
 	password: string;
@@ -19,4 +19,4 @@ const UserSchema = new Schema<User>(
 	{ timestamps: true }
 );
 
-export default mongoose.model('User', UserSchema);
+export default mongoose.model<User>('User', UserSchema);
