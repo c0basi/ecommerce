@@ -5,6 +5,8 @@
 	// background-color: coral;
 	position: relative;
 	overflow: hidden;
+	word-wrap: break-word;
+	overflow-x: hidden;
 
 	&__left,
 	&__right {
