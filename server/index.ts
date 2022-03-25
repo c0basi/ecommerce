@@ -13,7 +13,7 @@ mongoose
 
 app.use(express.json());
 
-app.get('/', function (req: express.Request, res: express.Response) {
+app.get('/api', function (req: express.Request, res: express.Response) {
 	res.send('Hello World!');
 });
 
