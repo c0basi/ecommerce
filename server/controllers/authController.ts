@@ -2,8 +2,10 @@ import { Request, Response } from 'express';
 import User from '../models/User';
 import CryptoJS from 'crypto-js';
 import 'dotenv/config';
+import jwt from 'jsonwebtoken';
 
 const passwordhash: string = process.env.PASS_SEC!;
+const secretKey: string = process.env.SECRET_KEY!;
 // REGISTER
 export const regsiterUser = async (req: Request, res: Response) => {
 	try {
@@ -16,7 +18,7 @@ export const regsiterUser = async (req: Request, res: Response) => {
 			).toString(),
 		});
 		const savedUser = await newUser.save();
-		console.log(savedUser);
+
 		res.status(201).json(savedUser);
 	} catch (err) {
 		console.log(err);
@@ -38,8 +40,13 @@ export const loginUser = async (req: Request, res: Response) => {
 		if (originalPassword !== req.body.password) {
 			res.status(401).json('Wroong crendentials');
 		} else {
+			const accessToken = jwt.sign(
+				{ id: user._id, isAdmin: user.isAdmin },
+				secretKey,
+				{ expiresIn: '3d' }
+			);
 			const { password, ...others } = user.toJSON();
-			res.status(200).json(others);
+			res.status(200).json({ ...others, accessToken });
 		}
 	} catch (err) {
 		res.status(500).json(err);
