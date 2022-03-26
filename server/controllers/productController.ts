@@ -19,4 +19,4 @@ const createProduct = async (req: Request, res: Response) => {
 	}
 };
 
-export { createProduct };
+export default { createProduct };

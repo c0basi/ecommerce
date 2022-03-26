@@ -1,7 +1,8 @@
-import express from 'express';
+import express, { application } from 'express';
 import mongoose from 'mongoose';
 import authRouter from './routes/auth';
 import userRouter from './routes/user';
+import productRouter from './routes/product';
 import 'dotenv/config';
 
 const app: express.Application = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
+app.use('/api/products', productRouter);
 
 app.get('/api', function (req: express.Request, res: express.Response) {
 	res.send('Hello World!');
