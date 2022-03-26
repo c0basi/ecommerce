@@ -55,7 +55,10 @@ const getUser = async (req: Request, res: Response) => {
 // GET ALL USERS
 const fetchAll = async (req: Request, res: Response) => {
 	try {
-		const user = await User.find();
+		const query = parseInt(req.query.new as string);
+		const user = query
+			? await User.find().sort({ _id: -1 }).limit(query)
+			: await User.find();
 		user && res.status(200).json(user);
 	} catch (err) {
 		res.status(500).json(err);
