@@ -2,16 +2,27 @@ import express, { Request, Response } from 'express';
 import verification from '../middleware/verifyToken';
 import userActions from '../controllers/userController';
 
-const router = express.Router();
+const userRouter = express.Router();
 
 // Update user route
 
-router.put('/:id', verification.verifyTokenAndAuth, userActions.updateUser);
+userRouter.put('/:id', verification.verifyTokenAndAuth, userActions.updateUser);
 
 // DELETE USER
-router.delete('/:id', verification.verifyTokenAndAuth, userActions.deleteUser);
+userRouter.delete(
+	'/:id',
+	verification.verifyTokenAndAuth,
+	userActions.deleteUser
+);
 
 //GET USER
-router.get('/find/:id', verification.verifyTokenAndAdmin, userActions.getUser);
+userRouter.get(
+	'/find/:id',
+	verification.verifyTokenAndAdmin,
+	userActions.getUser
+);
 
-export default router;
+//GET ALL USERS
+userRouter.get('/', verification.verifyTokenAndAdmin, userActions.fetchAll);
+
+export default userRouter;

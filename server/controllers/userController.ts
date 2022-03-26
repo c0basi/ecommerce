@@ -51,4 +51,14 @@ const getUser = async (req: Request, res: Response) => {
 		res.status(500).json(err);
 	}
 };
-export default { updateUser, getUser, deleteUser };
+
+// GET ALL USERS
+const fetchAll = async (req: Request, res: Response) => {
+	try {
+		const user = await User.find();
+		user && res.status(200).json(user);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+};
+export default { updateUser, getUser, deleteUser, fetchAll };

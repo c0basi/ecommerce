@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import router from './routes/auth';
-import vrouter from './routes/user';
+import authRouter from './routes/auth';
+import userRouter from './routes/user';
 import 'dotenv/config';
 
 const app: express.Application = express();
@@ -15,8 +15,8 @@ mongoose
 
 app.use(express.json());
 
-app.use('/test', router);
-app.use('/verify', vrouter);
+app.use('/api/auth', authRouter);
+app.use('/api/users', userRouter);
 
 app.get('/api', function (req: express.Request, res: express.Response) {
 	res.send('Hello World!');
