@@ -38,7 +38,7 @@ export const loginUser = async (req: Request, res: Response) => {
 			user && CryptoJS.AES.decrypt(user.password, passwordhash);
 		const originalPassword = hashedPassword?.toString(CryptoJS.enc.Utf8);
 		if (originalPassword !== req.body.password) {
-			res.status(401).json('Wroong crendentials');
+			res.status(401).json('Wrong crendentials');
 		} else {
 			const accessToken = jwt.sign(
 				{ id: user._id, isAdmin: user.isAdmin },

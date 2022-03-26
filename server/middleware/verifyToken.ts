@@ -10,6 +10,7 @@ import dotenv from 'dotenv';
 
 const access_token: string = process.env.SECRET_KEY!;
 
+// this needs a lot of fixing
 const verifyToken = (req: Request | any, res: Response, next: Function) => {
 	try {
 		const authHeader = req.headers.token as string;
@@ -43,4 +44,18 @@ const verifyTokenAndAuth = (
 	});
 };
 
-export default { verifyToken, verifyTokenAndAuth };
+const verifyTokenAndAdmin = (
+	req: Request | any,
+	res: Response,
+	next: Function
+) => {
+	verifyToken(req, res, () => {
+		if (req.user.isAdmin) {
+			next();
+		} else {
+			res.status(403).json('You are not aloowed to do that!');
+		}
+	});
+};
+
+export default { verifyToken, verifyTokenAndAuth, verifyTokenAndAdmin };
