@@ -7,3 +7,5 @@ const router = express.Router();
 // Update user route
 
 router.put('/:id', verification.verifyTokenAndAuth, updateUser);
+
+export default router;

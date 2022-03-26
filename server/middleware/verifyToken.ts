@@ -10,7 +10,7 @@ import dotenv from 'dotenv';
 
 const access_token: string = process.env.SECRET_KEY!;
 
-const verifyToken = (req: Request, res: Response, next: Function) => {
+const verifyToken = (req: Request | any, res: Response, next: Function) => {
 	try {
 		const authHeader = req.headers.token as string;
 		const token = authHeader && authHeader.split(' ')[1];
@@ -29,7 +29,11 @@ const verifyToken = (req: Request, res: Response, next: Function) => {
 	}
 };
 
-const verifyTokenAndAuth = (req: Request, res: Response, next: Function) => {
+const verifyTokenAndAuth = (
+	req: Request | any,
+	res: Response,
+	next: Function
+) => {
 	verifyToken(req, res, () => {
 		if (req.user.id === req.params.id || req.user.isAdmin) {
 			next();

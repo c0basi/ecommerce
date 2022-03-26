@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"client": "npm start --prefix e-store",
-		"start": "npx nodemon server/index.ts",
+		"start": "nodemon --files server/index.ts",
 		"build": "cd e-store && npm run build",
 		"server": "nodemon server/index.ts",
 		"dev": "concurrently \"npm run server\"  \"npm run e-store\""

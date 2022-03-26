@@ -98,5 +98,6 @@
 		// "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
 		"skipLibCheck": true /* Skip type checking all .d.ts files. */
 	},
-	"files": ["server/custom.request.d.ts"]
+	"files": ["server/typings/express/custom.d.ts"],
+	"typeRoots": ["./server/typings", "./node_modules/@types"]
 }
