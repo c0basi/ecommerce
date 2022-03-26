@@ -7,8 +7,8 @@ import User from '../models/User'; // add this to a type folder
 const router = express.Router();
 
 const secret: string = process.env.SECRET_KEY!;
-// UPDATE
 
+// UPDATE
 const updateUser = async (req: Request, res: Response) => {
 	if (req.body.password) {
 		req.body.password = CryptoJS.AES.encrypt(
@@ -29,7 +29,6 @@ const updateUser = async (req: Request, res: Response) => {
 };
 
 // DELETE
-
 const deleteUser = async (req: Request, res: Response) => {
 	try {
 		await User.findByIdAndDelete(req.params.id);
@@ -64,4 +63,30 @@ const fetchAll = async (req: Request, res: Response) => {
 		res.status(500).json(err);
 	}
 };
-export default { updateUser, getUser, deleteUser, fetchAll };
+
+// GET USER STATS
+const userStats = async (req: Request, res: Response) => {
+	const date = new Date();
+	const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
+	try {
+		const data = await User.aggregate([
+			{ $match: { createdAt: { $gte: lastYear } } },
+			{
+				$project: {
+					month: { $month: '$createdAt' },
+				},
+			},
+			{
+				$group: {
+					_id: '$month',
+					total: { $sum: 1 },
+				},
+			},
+		]);
+		res.status(200).json(data);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+};
+
+export default { updateUser, getUser, deleteUser, fetchAll, userStats };

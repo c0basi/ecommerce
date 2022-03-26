@@ -25,4 +25,10 @@ userRouter.get(
 //GET ALL USERS
 userRouter.get('/', verification.verifyTokenAndAdmin, userActions.fetchAll);
 
+// USER STATS
+userRouter.get(
+	'/stats',
+	verification.verifyTokenAndAdmin,
+	userActions.userStats
+);
 export default userRouter;
