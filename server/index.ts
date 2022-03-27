@@ -4,6 +4,7 @@ import authRouter from './routes/auth';
 import userRouter from './routes/user';
 import productRouter from './routes/product';
 import cartRouter from './routes/cart';
+import orderRouter from './routes/order';
 import 'dotenv/config';
 
 const app: express.Application = express();
@@ -21,6 +22,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/cart', cartRouter);
+app.use('/api/orders', orderRouter);
 
 app.get('/api', function (req: express.Request, res: express.Response) {
 	res.send('Hello World!');
