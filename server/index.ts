@@ -5,8 +5,9 @@ import userRouter from './routes/user';
 import productRouter from './routes/product';
 import cartRouter from './routes/cart';
 import orderRouter from './routes/order';
+import stripeRouter from './routes/stripe';
 import 'dotenv/config';
-
+import cors from 'cors';
 const app: express.Application = express();
 
 const uri: string = process.env.DB_CONNECT!;
@@ -17,12 +18,13 @@ mongoose
 	.catch((err) => console.log(err));
 
 app.use(express.json());
-
+app.use(cors());
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/orders', orderRouter);
+app.use('/api/checkout', stripeRouter);
 
 app.get('/api', function (req: express.Request, res: express.Response) {
 	res.send('Hello World!');
