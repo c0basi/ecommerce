@@ -14,11 +14,7 @@ const Home = () => {
 			<NavBar />
 			<Slider />
 			<Categories />
-			<Products
-				cat={'shop'}
-				filters={{ color: 'black', size: 'M' }}
-				sort="newest"
-			/>
+			<Products />
 			<Newsletter />
 			<Footer />
 		</div>

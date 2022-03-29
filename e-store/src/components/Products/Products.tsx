@@ -5,9 +5,9 @@ import Product from '../Products/Product';
 import axios from 'axios';
 
 interface ProductsProps {
-	cat: string;
-	filters: Filter;
-	sort: string;
+	cat?: string;
+	filters?: Filter;
+	sort?: string;
 }
 
 type Filter = {
@@ -53,11 +53,11 @@ const Products = ({ cat, filters, sort }: ProductsProps) => {
 		getProducts();
 	}, [cat]);
 
+	// color and size filter
 	useEffect(() => {
 		console.log('filters');
-
-		console.log(filters.color);
 		cat &&
+			filters &&
 			setFilteredProducts(
 				products.filter(
 					(item: Product) =>
@@ -68,11 +68,30 @@ const Products = ({ cat, filters, sort }: ProductsProps) => {
 	}, [products, cat, filters]);
 	console.log(filteredProducts);
 
+	// sort filter
+	useEffect(() => {
+		if (sort === 'newest') {
+			setFilteredProducts((prev) =>
+				[...prev].sort(
+					(a, b) => +new Date(a.createdAt) - +new Date(b.createdAt)
+				)
+			);
+		} else if (sort === 'asc') {
+			setFilteredProducts((prev) =>
+				[...prev].sort((a, b) => a.price - b.price)
+			);
+		} else {
+			setFilteredProducts((prev) =>
+				[...prev].sort((a, b) => b.price - a.price)
+			);
+		}
+	}, [sort]);
+
 	return (
 		<div className="productsContainer">
-			{filteredProducts.map((item) => (
-				<Product item={item} key={item._id} />
-			))}
+			{cat
+				? filteredProducts.map((item) => <Product item={item} key={item._id} />)
+				: products.map((item) => <Product item={item} key={item._id} />)}
 		</div>
 	);
 };
