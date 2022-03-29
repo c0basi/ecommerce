@@ -10,8 +10,8 @@ import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer/Footer';
 
 type Filter = {
-	color: string;
-	size: string;
+	color?: string;
+	size?: string;
 };
 
 const ProductList = () => {
