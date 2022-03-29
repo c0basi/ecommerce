@@ -3,7 +3,15 @@ import './Products.scss';
 import { popularProducts } from '../../data/data';
 import Product from '../Products/Product';
 
-const Products = () => {
+interface ProductsProps {
+	cat: string;
+	filters: object;
+	sort: string;
+}
+
+const Products = ({ cat, filters, sort }: ProductsProps) => {
+	console.log(cat, filters, sort);
+
 	return (
 		<div className="productsContainer">
 			{popularProducts.map((item) => (
