@@ -1,52 +1,80 @@
 import Announcement from '../components/Announcement';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer/Footer';
 import NavBar from '../components/NavBar';
 import Newsletter from '../components/Newsletter';
 import './Product.scss';
 import CSS from 'csstype';
+import { ProductItem } from '../components/Products/ProductType';
 
 import jean from '../assets/jean-2.jpg';
 import { Add, Remove } from '@mui/icons-material';
+import { useLocation } from 'react-router-dom';
+import { publicRequest } from '../utils/requestMethods';
+import axios from 'axios';
 
-const bStyle: CSS.Properties = {
-	backgroundColor: 'black',
-};
-const dStyle: CSS.Properties = {
-	backgroundColor: 'darkblue',
-};
-const gStyle: CSS.Properties = {
-	backgroundColor: 'grey',
-};
+// const bStyle: CSS.Properties = {
+// 	backgroundColor: 'black',
+// };
+// const dStyle: CSS.Properties = {
+// 	backgroundColor: 'darkblue',
+// };
+// const gStyle: CSS.Properties = {
+// 	backgroundColor: 'grey',
+// };
+
+const filterStyles = (color: string) => ({
+	backgroundColor: `${color}`,
+});
 const Product = () => {
+	const [product, setProduct] = useState<ProductItem>({} as ProductItem);
+	const location = useLocation();
+	const id = location.pathname.split('/')[2];
+	console.log(id);
+
+	const getProduct = async () => {
+		try {
+			const res = await publicRequest.get('/products/find/' + id);
+			console.log(res.data);
+
+			setProduct(res.data);
+		} catch (err) {
+			console.log('something went wrong with the request');
+		}
+	};
+
+	useEffect(() => {
+		getProduct();
+	}, [id]);
+	console.log('product is ');
+
+	console.log(product.color);
+
 	return (
 		<div className="product-page__container">
 			<Announcement />
 			<NavBar />
 			<div className="product-page__container--wrapper">
 				<div className="product-page__container--wrapper__image">
-					<img
-						src={
-							'https://images.unsplash.com/photo-1578681994506-b8f463449011?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80'
-						}
-						alt="jeans"
-					/>
+					<img src={product.img} alt="jeans" />
 				</div>
 				<div className="product-page__container--wrapper__info">
-					<h2>Black Sweat Shirt</h2>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-						exercitationem sit ipsa a quidem adipisci ratione praesentium earum
-						explicabo cumque, deleniti, necessitatibus ipsam officiis inventore
-						consequatur voluptatem atque illum voluptates.
-					</p>
-					<span className="price">$49.99</span>
+					<h2>{product.title}</h2>
+					<p>{product.desc}</p>
+					<span className="price">${product.price}</span>
 					<div className="product-page__container--wrapper__info--filtercontainer">
 						<div className="filterColors">
 							<span className="filter-title">Color</span>
-							<div className="filterColors__style" style={bStyle}></div>
-							<div className="filterColors__style" style={dStyle}></div>
-							<div className="filterColors__style" style={gStyle}></div>
+							{product.color.map((color) => (
+								<div
+									className="filterColors__style"
+									style={filterStyles(color)}
+									key={color}
+								></div>
+							))}
+
+							{/* <div className="filterColors__style" style={dStyle}></div>
+							<div className="filterColors__style" style={gStyle}></div> */}
 						</div>
 						<div>
 							<span className="filter-title">Size</span>

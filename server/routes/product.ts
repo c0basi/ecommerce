@@ -24,9 +24,9 @@ productRouter.delete(
 	productActions.deleteProduct
 );
 // GET product
-productRouter.get('/:id', productActions.updateProduct);
+productRouter.get('/find/:id', productActions.updateProduct);
 
 // GET ALL PRODUCTS
-productRouter.get('/', productActions.fetchAllProducts);
+productRouter.get('/find', productActions.fetchAllProducts);
 
 export default productRouter;

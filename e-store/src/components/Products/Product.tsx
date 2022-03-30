@@ -5,7 +5,7 @@ import {
 } from '@mui/icons-material';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Product } from './ProductType';
+import { ProductItem } from './ProductType';
 import './Product.scss';
 
 // type ProductItem = {
@@ -29,7 +29,7 @@ import './Product.scss';
 // };
 
 interface productProps {
-	item: Product;
+	item: ProductItem;
 }
 
 const Product = ({ item }: productProps) => {

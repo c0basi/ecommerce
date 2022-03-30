@@ -1,4 +1,4 @@
-export type Product = {
+export type ProductItem = {
 	categories: Array<string>;
 	color: Array<string>;
 	createdAt: string;
