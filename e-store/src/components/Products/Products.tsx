@@ -56,15 +56,17 @@ const Products = ({ cat, filters, sort }: ProductsProps) => {
 	// color and size filter
 	useEffect(() => {
 		console.log('filters');
-		cat &&
-			filters &&
-			setFilteredProducts(
-				products.filter(
-					(item: Product) =>
-						item.color.includes(filters.color?.toLowerCase()!) &&
-						item.size.includes(filters.size!)
-				)
-			);
+		console.log(filters);
+
+		cat && filters && Object.keys(filters).length > 0
+			? setFilteredProducts(
+					products.filter(
+						(item: Product) =>
+							item.color.includes(filters.color?.toLowerCase()!) &&
+							item.size.includes(filters.size!)
+					)
+			  )
+			: setFilteredProducts(products);
 	}, [products, cat, filters]);
 	console.log(filteredProducts);
 
@@ -91,7 +93,9 @@ const Products = ({ cat, filters, sort }: ProductsProps) => {
 		<div className="productsContainer">
 			{cat
 				? filteredProducts.map((item) => <Product item={item} key={item._id} />)
-				: products.map((item) => <Product item={item} key={item._id} />)}
+				: products
+						.slice(0, 8)
+						.map((item) => <Product item={item} key={item._id} />)}
 		</div>
 	);
 };

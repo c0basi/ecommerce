@@ -4,22 +4,24 @@ import {
 	ShoppingCartOutlined,
 } from '@mui/icons-material';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Product } from './ProductType';
 import './Product.scss';
 
-type ProductItem = {
-	categories: Array<string>;
-	color: Array<string>;
-	createdAt: string;
-	desc: string;
-	img: string;
-	instock: boolean;
-	price: number;
-	size: Array<string>;
-	title: string;
-	updatedAt: string;
-	__v: string;
-	_id: string;
-};
+// type ProductItem = {
+// 	categories: Array<string>;
+// 	color: Array<string>;
+// 	createdAt: string;
+// 	desc: string;
+// 	img: string;
+// 	instock: boolean;
+// 	price: number;
+// 	size: Array<string>;
+// 	title: string;
+// 	updatedAt: string;
+// 	__v: string;
+// 	_id: string;
+// };
 // type ProductItem = {
 // 	// find a way to rename this
 // 	_id: string;
@@ -27,7 +29,7 @@ type ProductItem = {
 // };
 
 interface productProps {
-	item: ProductItem;
+	item: Product;
 }
 
 const Product = ({ item }: productProps) => {
@@ -36,12 +38,15 @@ const Product = ({ item }: productProps) => {
 			<div className="productContainer--circle"></div>
 			<img src={item.img} alt="" />
 			<div className="productContainer--info">
+				``
 				<div className="productContainer--info__icon">
 					<ShoppingCartOutlined />
 				</div>
-				<div className="productContainer--info__icon">
-					<SearchOutlined />
-				</div>
+				<Link to={`/product/${item._id}`}>
+					<div className="productContainer--info__icon">
+						<SearchOutlined />
+					</div>
+				</Link>
 				<div className="productContainer--info__icon">
 					<FavoriteBorderOutlined />
 				</div>

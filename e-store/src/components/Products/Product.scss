@@ -41,6 +41,10 @@
 		justify-content: center;
 		transition: all 0.4s ease;
 		cursor: pointer;
+		a:link,
+		a:visited {
+			color: black;
+		}
 		&__icon {
 			width: 4rem;
 			height: 4rem;

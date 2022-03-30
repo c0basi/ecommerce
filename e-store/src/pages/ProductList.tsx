@@ -34,7 +34,7 @@ const ProductList = () => {
 		<div>
 			<Announcement />
 			<NavBar />
-			<h1 className="filter-classes">Dresses</h1>
+			<h1 className="filter-classes">{cat}</h1>
 			<div className="filter-container">
 				<div className="filter-container__filter">
 					<span className="filter-container__filter--text">
