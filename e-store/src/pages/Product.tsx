@@ -28,16 +28,20 @@ const filterStyles = (color: string) => ({
 });
 const Product = () => {
 	const [product, setProduct] = useState<ProductItem>({} as ProductItem);
+	const [quantity, setQuantity] = useState(1);
+	const [size, setSize] = useState('');
+	const [color, setColor] = useState('');
 	const location = useLocation();
 	const id = location.pathname.split('/')[2];
 	console.log(id);
 
 	const getProduct = async () => {
 		try {
+			console.log('product data');
 			const res = await publicRequest.get('/products/find/' + id);
-			console.log(res.data);
-
-			setProduct(res.data);
+			console.log('working');
+			res && setProduct(res.data);
+			console.log('got it ');
 		} catch (err) {
 			console.log('something went wrong with the request');
 		}
@@ -49,6 +53,14 @@ const Product = () => {
 	console.log('product is ');
 
 	console.log(product.color);
+
+	const handleQuantity = (type: string) => {
+		if (type === 'inc') {
+			setQuantity((prev) => prev + 1);
+		} else if (type == 'dec') {
+			quantity > 0 && setQuantity((prev) => prev - 1);
+		}
+	};
 
 	return (
 		<div className="product-page__container">
@@ -65,8 +77,10 @@ const Product = () => {
 					<div className="product-page__container--wrapper__info--filtercontainer">
 						<div className="filterColors">
 							<span className="filter-title">Color</span>
-							{product.color.map((color) => (
+							{/*  remove this and add a approved message */}
+							{product.color?.map((color) => (
 								<div
+									onClick={() => setColor(color)}
 									className="filterColors__style"
 									style={filterStyles(color)}
 									key={color}
@@ -78,22 +92,27 @@ const Product = () => {
 						</div>
 						<div>
 							<span className="filter-title">Size</span>
-							<select>
+							<select
+								onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+									setSize(e.target.value)
+								}
+							>
 								<option disabled selected>
 									{' '}
 								</option>
-								<option>XS</option> <option>S</option>
-								<option>M</option>
-								<option>L</option>
-								<option>XL</option>
+								{product.size?.map((size) => (
+									<option key={size} value={size}>
+										{size}
+									</option>
+								))}
 							</select>
 						</div>
 					</div>
 					<div className="product-page__container--wrapper__info--addContainer">
 						<div className="product-page__container--wrapper__info--addContainer__amount">
-							<Remove />
-							<span>1</span>
-							<Add />
+							<Remove onClick={() => handleQuantity('dec')} />
+							<span>{quantity}</span>
+							<Add onClick={() => handleQuantity('inc')} />
 						</div>
 						<button>ADD TO CART</button>
 					</div>
