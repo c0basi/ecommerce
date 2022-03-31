@@ -68,7 +68,7 @@ const Product = () => {
 		dispatch(
 			addProduct({
 				product: {
-					...product,
+					...productItem,
 					color: [color],
 					size: [size],
 					quantity: quantity,

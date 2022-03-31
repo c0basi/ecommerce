@@ -2,6 +2,7 @@ import React from 'react';
 import './NavBar.scss';
 import SearchIcon from '@mui/icons-material/Search';
 import { Search } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Badge from '@mui/material/Badge';
 import { makeStyles } from '@mui/styles';
@@ -36,13 +37,15 @@ const NavBar = () => {
 					<div className="navbar__wrapper--right__menu">REGISTER</div>
 					<div className="navbar__wrapper--right__menu">SIGN IN</div>
 					<div className="navbar__wrapper--right__menu">
-						<Badge
-							badgeContent={quantity}
-							color="primary"
-							classes={{ badge: classes.badge }}
-						>
-							<ShoppingCartOutlinedIcon className="shopping-icon" />
-						</Badge>
+						<Link to={'/cart'}>
+							<Badge
+								badgeContent={quantity}
+								color="primary"
+								classes={{ badge: classes.badge }}
+							>
+								<ShoppingCartOutlinedIcon className="shopping-icon" />
+							</Badge>
+						</Link>
 					</div>
 				</div>
 			</div>

@@ -44,6 +44,10 @@
 			flex: 1;
 
 			&__menu {
+				a:link,
+				a:visited {
+					color: black;
+				}
 				font-size: 1.4rem;
 				margin-right: 2.5rem;
 				cursor: pointer;

@@ -25,11 +25,12 @@ const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		addProduct: (state, { payload }: PayloadAction<ProductPayload>) => {
-			const newItem = payload;
+			state.total += payload.quantity * payload.product.price;
 			const existItemIndex = state.products.findIndex(
 				(item) =>
 					item._id === payload.product._id &&
-					item.color[0] === payload.product.color[0]
+					item.color[0] === payload.product.color[0] &&
+					item.size[0] === payload.product.size[0]
 			);
 			const existsItem = state.products[existItemIndex];
 
@@ -39,8 +40,6 @@ const cartSlice = createSlice({
 				state.products.push(payload.product);
 			}
 			state.quantity += payload.quantity;
-
-			state.total += payload.product.price * payload.quantity;
 		},
 	},
 });
