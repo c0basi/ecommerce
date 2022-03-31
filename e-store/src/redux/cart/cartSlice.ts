@@ -11,7 +11,6 @@ interface cartContent {
 interface ProductPayload {
 	product: ProductItem;
 	quantity: number;
-	price: number;
 }
 const initialState: cartContent = {
 	products: [],
@@ -25,7 +24,7 @@ const cartSlice = createSlice({
 		addProduct: (state, { payload }: PayloadAction<ProductPayload>) => {
 			state.quantity += 1;
 			state.products.push(payload.product);
-			state.total += payload.price;
+			state.total += payload.product.price * payload.quantity;
 		},
 	},
 });
