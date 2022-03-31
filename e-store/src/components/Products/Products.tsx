@@ -3,6 +3,9 @@ import './Products.scss';
 import { popularProducts } from '../../data/data';
 import Product from '../Products/Product';
 import axios from 'axios';
+import { getAllProducts } from '../../redux/products/product-actions';
+import { productsSelector } from '../../redux/products/productsSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 interface ProductsProps {
 	cat?: string;
@@ -35,23 +38,32 @@ const Products = ({ cat, filters, sort }: ProductsProps) => {
 		[] as Product[]
 	);
 	console.log(cat, filters, sort);
+	const dispatch = useDispatch();
+	const getProduct = useSelector(productsSelector);
+	const { products: initalProducts, loading, error } = getProduct;
+	console.log(initalProducts);
 
 	// move this function somewhere esle
-	const getProducts = async () => {
-		try {
-			const res = await axios.get(
-				cat
-					? `http://localhost:5000/api/products/find?category=${cat}`
-					: 'http://localhost:5000/api/products/find'
-			);
-			console.log(res.data);
-			setProducts(res.data);
-		} catch (err) {}
-	};
+	// const getProducts = async () => {
+	// 	try {
+	// 		const res = await axios.get(
+	// 			cat
+	// 				? `http://localhost:5000/api/products/find?category=${cat}`
+	// 				: 'http://localhost:5000/api/products/find'
+	// 		);
+	// 		console.log(res.data);
+	// 		setProducts(res.data);
+	// 	} catch (err) {}
+	// };
 
 	useEffect(() => {
-		getProducts();
+		// getProducts();
+		cat ? dispatch(getAllProducts(cat)) : dispatch(getAllProducts());
+		setProducts(initalProducts);
 	}, [cat]);
+	console.log('checking products');
+
+	console.log(products);
 
 	// color and size filter
 	useEffect(() => {
@@ -85,13 +97,22 @@ const Products = ({ cat, filters, sort }: ProductsProps) => {
 		}
 	}, [sort]);
 
+	console.log('checking for the products to display');
+	console.log(products);
+
 	return (
 		<div className="productsContainer">
-			{cat
-				? filteredProducts.map((item) => <Product item={item} key={item._id} />)
-				: products
-						.slice(0, 8)
-						.map((item) => <Product item={item} key={item._id} />)}
+			{loading ? (
+				<h2>Loading...</h2>
+			) : error ? (
+				<h2>{error}</h2>
+			) : cat ? (
+				filteredProducts.map((item) => <Product item={item} key={item._id} />)
+			) : (
+				products
+					.slice(0, 8)
+					.map((item) => <Product item={item} key={item._id} />)
+			)}
 		</div>
 	);
 };

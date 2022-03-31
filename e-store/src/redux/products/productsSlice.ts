@@ -22,6 +22,8 @@ const productsSlice = createSlice({
 	extraReducers: (builder) => {
 		builder.addCase(getAllProducts.fulfilled, (state, { payload }) => {
 			state.products = payload;
+			console.log(payload);
+
 			state.loading = false;
 		});
 		builder.addCase(getAllProducts.pending, (state, { payload }) => {
@@ -34,5 +36,5 @@ const productsSlice = createSlice({
 });
 
 export const productActions = productsSlice.actions;
-export const productSelector = (state: RootState) => state.products;
+export const productsSelector = (state: RootState) => state.products;
 export default productsSlice.reducer;

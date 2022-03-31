@@ -5,15 +5,22 @@ import { publicRequest } from '../../utils/requestMethods';
 export const getAllProducts = createAsyncThunk(
 	'/product/find',
 	async (cat?: string) => {
+		console.log('strting');
+
 		try {
-			if (typeof cat === 'undefined') {
+			if (typeof cat !== 'undefined') {
 				const res = await publicRequest.get(`/products/find/?category=${cat}`);
 				const data = res.data;
+				console.log(data);
+				return data;
+			} else {
+				console.log('working on it ');
+				const res = await publicRequest.get('/products/find/');
+				console.log('got it ');
+				const data = res.data;
+				console.log(data);
 				return data;
 			}
-			const res = await publicRequest.get('/products/find/');
-			const data = res.data;
-			return data;
 		} catch (err) {
 			console.log(err);
 			throw new Error('Something went wrong...');
