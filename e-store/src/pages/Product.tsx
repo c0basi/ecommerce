@@ -1,20 +1,16 @@
+import { Add, Remove } from '@mui/icons-material';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import Announcement from '../components/Announcement';
-import React, { useEffect, useState, useCallback } from 'react';
 import Footer from '../components/Footer/Footer';
 import NavBar from '../components/NavBar';
 import Newsletter from '../components/Newsletter';
-import './Product.scss';
-import CSS from 'csstype';
 import { ProductItem } from '../components/Products/ProductType';
-import { useDispatch, useSelector } from 'react-redux';
-import { productSelector } from '../redux/products/productSlice';
-import { getProduct as getProductItem } from '../redux/products/product-actions';
-import jean from '../assets/jean-2.jpg';
-import { Add, Remove } from '@mui/icons-material';
-import { useLocation } from 'react-router-dom';
-import { publicRequest } from '../utils/requestMethods';
-import axios from 'axios';
 import { addProduct } from '../redux/cart/cartSlice';
+import { getProduct as getProductItem } from '../redux/products/product-actions';
+import { productSelector } from '../redux/products/productSlice';
+import './Product.scss';
 
 // const bStyle: CSS.Properties = {
 // 	backgroundColor: 'black',
@@ -71,7 +67,12 @@ const Product = () => {
 	const handleClick = () => {
 		dispatch(
 			addProduct({
-				product: { ...product, color: [color], size: [size] },
+				product: {
+					...product,
+					color: [color],
+					size: [size],
+					quantity: quantity,
+				},
 				quantity,
 			})
 		);
@@ -121,7 +122,7 @@ const Product = () => {
 										<option disabled selected>
 											{' '}
 										</option>
-										{product.size?.map((size) => (
+										{productItem.size?.map((size) => (
 											<option key={size} value={size}>
 												{size}
 											</option>

@@ -2,14 +2,17 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductItem } from '../../components/Products/ProductType';
 import { RootState } from '../../redux/store';
 
+interface ProductCartItem extends ProductItem {
+	quantity: number;
+}
 interface cartContent {
-	products: ProductItem[];
+	products: ProductCartItem[];
 	quantity: number;
 	total: number;
 }
 
 interface ProductPayload {
-	product: ProductItem;
+	product: ProductCartItem;
 	quantity: number;
 }
 const initialState: cartContent = {
@@ -22,8 +25,21 @@ const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		addProduct: (state, { payload }: PayloadAction<ProductPayload>) => {
-			state.quantity += 1;
-			state.products.push(payload.product);
+			const newItem = payload;
+			const existItemIndex = state.products.findIndex(
+				(item) =>
+					item._id === payload.product._id &&
+					item.color[0] === payload.product.color[0]
+			);
+			const existsItem = state.products[existItemIndex];
+
+			if (existsItem) {
+				state.products[existItemIndex].quantity += payload.quantity;
+			} else {
+				state.products.push(payload.product);
+			}
+			state.quantity += payload.quantity;
+
 			state.total += payload.product.price * payload.quantity;
 		},
 	},
