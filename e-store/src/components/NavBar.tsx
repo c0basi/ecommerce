@@ -5,6 +5,8 @@ import { Search } from '@mui/icons-material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Badge from '@mui/material/Badge';
 import { makeStyles } from '@mui/styles';
+import { useSelector } from 'react-redux';
+import { cartSelector } from '../redux/cart/cartSlice';
 
 const useStyles = makeStyles({
 	badge: {
@@ -13,6 +15,9 @@ const useStyles = makeStyles({
 });
 
 const NavBar = () => {
+	const quantity = useSelector(cartSelector).quantity;
+	console.log(quantity);
+
 	const classes = useStyles();
 	return (
 		<div className="navbar">
@@ -32,7 +37,7 @@ const NavBar = () => {
 					<div className="navbar__wrapper--right__menu">SIGN IN</div>
 					<div className="navbar__wrapper--right__menu">
 						<Badge
-							badgeContent={4}
+							badgeContent={quantity}
 							color="primary"
 							classes={{ badge: classes.badge }}
 						>

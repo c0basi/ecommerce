@@ -1,17 +1,19 @@
 import Announcement from '../components/Announcement';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Footer from '../components/Footer/Footer';
 import NavBar from '../components/NavBar';
 import Newsletter from '../components/Newsletter';
 import './Product.scss';
 import CSS from 'csstype';
 import { ProductItem } from '../components/Products/ProductType';
+import { useDispatch } from 'react-redux';
 
 import jean from '../assets/jean-2.jpg';
 import { Add, Remove } from '@mui/icons-material';
 import { useLocation } from 'react-router-dom';
 import { publicRequest } from '../utils/requestMethods';
 import axios from 'axios';
+import { addProduct } from '../redux/cart/cartSlice';
 
 // const bStyle: CSS.Properties = {
 // 	backgroundColor: 'black',
@@ -31,11 +33,11 @@ const Product = () => {
 	const [quantity, setQuantity] = useState(1);
 	const [size, setSize] = useState('');
 	const [color, setColor] = useState('');
+	const dispatch = useDispatch();
 	const location = useLocation();
 	const id = location.pathname.split('/')[2];
-	console.log(id);
 
-	const getProduct = async () => {
+	const getProduct = useCallback(async () => {
 		try {
 			console.log('product data');
 			const res = await publicRequest.get('/products/find/' + id);
@@ -45,14 +47,11 @@ const Product = () => {
 		} catch (err) {
 			console.log('something went wrong with the request');
 		}
-	};
+	}, [id]);
 
 	useEffect(() => {
 		getProduct();
-	}, [id]);
-	console.log('product is ');
-
-	console.log(product.color);
+	}, [getProduct]);
 
 	const handleQuantity = (type: string) => {
 		if (type === 'inc') {
@@ -60,6 +59,12 @@ const Product = () => {
 		} else if (type == 'dec') {
 			quantity > 0 && setQuantity((prev) => prev - 1);
 		}
+	};
+
+	const handleClick = () => {
+		dispatch(
+			addProduct({ product, quantity, price: +product.price * +quantity })
+		);
 	};
 
 	return (
@@ -114,7 +119,7 @@ const Product = () => {
 							<span>{quantity}</span>
 							<Add onClick={() => handleQuantity('inc')} />
 						</div>
-						<button>ADD TO CART</button>
+						<button onClick={() => handleClick()}>ADD TO CART</button>
 					</div>
 				</div>
 			</div>

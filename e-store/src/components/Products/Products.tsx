@@ -55,9 +55,6 @@ const Products = ({ cat, filters, sort }: ProductsProps) => {
 
 	// color and size filter
 	useEffect(() => {
-		console.log('filters');
-		console.log(filters);
-
 		cat && filters && Object.keys(filters).length > 0
 			? setFilteredProducts(
 					products.filter(
@@ -68,7 +65,6 @@ const Products = ({ cat, filters, sort }: ProductsProps) => {
 			  )
 			: setFilteredProducts(products);
 	}, [products, cat, filters]);
-	console.log(filteredProducts);
 
 	// sort filter
 	useEffect(() => {

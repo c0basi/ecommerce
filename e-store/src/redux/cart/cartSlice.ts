@@ -8,6 +8,11 @@ interface cartContent {
 	total: number;
 }
 
+interface ProductPayload {
+	product: ProductItem;
+	quantity: number;
+	price: number;
+}
 const initialState: cartContent = {
 	products: [],
 	quantity: 0,
@@ -17,7 +22,7 @@ const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
 	reducers: {
-		addProduct: (state, { payload }) => {
+		addProduct: (state, { payload }: PayloadAction<ProductPayload>) => {
 			state.quantity += 1;
 			state.products.push(payload.product);
 			state.total += payload.price;
