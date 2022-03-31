@@ -9,9 +9,22 @@ interface cartItemProps {
 	img: string;
 	quantity: number;
 	price: number;
+	itemColor: string;
 }
 
-const CartItem = ({ title, id, size, price, quantity, img }: cartItemProps) => {
+const cartStyles = (c: string) => ({
+	backgroundColor: `${c}`,
+});
+
+const CartItem = ({
+	title,
+	id,
+	size,
+	price,
+	quantity,
+	img,
+	itemColor,
+}: cartItemProps) => {
 	return (
 		<div className="cartitem">
 			<div className="cartItem__image">
@@ -23,7 +36,10 @@ const CartItem = ({ title, id, size, price, quantity, img }: cartItemProps) => {
 				</span>
 				<span> {title}</span>
 				<span>ID: {id}</span>
-				<div className="cartitem__details--color"></div>
+				<div
+					className="cartitem__details--color"
+					style={cartStyles(itemColor)}
+				></div>
 				<span>Size: {size}</span>
 			</div>
 			<div className="cartitem__actions">

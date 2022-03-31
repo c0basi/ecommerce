@@ -10,6 +10,7 @@ import './Cart.scss';
 
 const Cart = () => {
 	const cartItems = useSelector(cartSelector).products;
+	const total = useSelector(cartSelector).total;
 	return (
 		<div className="cart-container">
 			<NavBar />
@@ -28,6 +29,7 @@ const Cart = () => {
 						{cartItems.map((item) => (
 							<CartItem
 								key={item._id}
+								itemColor={item.color[0]}
 								img={item.img}
 								id={item._id.substring(0, 6)}
 								title={item.title}
@@ -46,7 +48,7 @@ const Cart = () => {
 								Subtotal
 							</span>
 							<span className="cart-container__wrapper--bottom__summary--item__price">
-								$80
+								$ {total}
 							</span>
 						</div>
 						<div className="cart-container__wrapper--bottom__summary--item">
