@@ -33,15 +33,15 @@ type Product = {
 };
 
 const Products = ({ cat, filters, sort }: ProductsProps) => {
-	const [products, setProducts] = useState<Product[]>([] as Product[]);
+	// const [products, setProducts] = useState<Product[]>([] as Product[]);
 	const [filteredProducts, setFilteredProducts] = useState<Product[]>(
 		[] as Product[]
 	);
 	console.log(cat, filters, sort);
 	const dispatch = useDispatch();
 	const getProduct = useSelector(productsSelector);
-	const { products: initalProducts, loading, error } = getProduct;
-	console.log(initalProducts);
+	const { products, loading, error } = getProduct;
+	console.log(loading);
 
 	// move this function somewhere esle
 	// const getProducts = async () => {
@@ -59,7 +59,6 @@ const Products = ({ cat, filters, sort }: ProductsProps) => {
 	useEffect(() => {
 		// getProducts();
 		cat ? dispatch(getAllProducts(cat)) : dispatch(getAllProducts());
-		setProducts(initalProducts);
 	}, [cat]);
 	console.log('checking products');
 
@@ -106,12 +105,16 @@ const Products = ({ cat, filters, sort }: ProductsProps) => {
 				<h2>Loading...</h2>
 			) : error ? (
 				<h2>{error}</h2>
-			) : cat ? (
-				filteredProducts.map((item) => <Product item={item} key={item._id} />)
 			) : (
-				products
-					.slice(0, 8)
-					.map((item) => <Product item={item} key={item._id} />)
+				[
+					cat
+						? filteredProducts.map((item) => (
+								<Product item={item} key={item._id} />
+						  ))
+						: products
+								.slice(0, 8)
+								.map((item) => <Product item={item} key={item._id} />),
+				]
 			)}
 		</div>
 	);
