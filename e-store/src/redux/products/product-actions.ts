@@ -2,8 +2,27 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { useCallback } from 'react';
 import { publicRequest } from '../../utils/requestMethods';
 
-export const getProduct = createAsyncThunk(
+export const getAllProducts = createAsyncThunk(
 	'/product/find',
+	async (cat?: string) => {
+		try {
+			if (typeof cat === 'undefined') {
+				const res = await publicRequest.get(`/products/find/?category=${cat}`);
+				const data = res.data;
+				return data;
+			}
+			const res = await publicRequest.get('/products/find/');
+			const data = res.data;
+			return data;
+		} catch (err) {
+			console.log(err);
+			throw new Error('Something went wrong...');
+		}
+	}
+);
+
+export const getProduct = createAsyncThunk(
+	'/product/find?id',
 	async (id: string) => {
 		try {
 			console.log('product data');
