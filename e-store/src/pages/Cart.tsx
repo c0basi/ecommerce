@@ -1,5 +1,5 @@
 import { Add, Remove } from '@mui/icons-material';
-import React from 'react';
+import React, { useState } from 'react';
 import Announcement from '../components/Announcement';
 import Footer from '../components/Footer/Footer';
 import NavBar from '../components/NavBar';
@@ -7,10 +7,23 @@ import CartItem from '../components/cart/CartItem';
 import { useSelector } from 'react-redux';
 import { cartSelector } from '../redux/cart/cartSlice';
 import './Cart.scss';
+import StripeCheckout, { Token } from 'react-stripe-checkout';
 
 const Cart = () => {
+	const [token, setToken] = useState<Token | string>('');
+	const stripe_key: string = process.env.REACT_APP_STRIPE_KEY!;
 	const cartItems = useSelector(cartSelector).products;
 	const total = useSelector(cartSelector).total;
+	console.log('stripe key');
+
+	console.log(stripe_key);
+
+	const onToken = (token: Token) => {
+		setToken(token);
+	};
+
+	console.log(token);
+
 	return (
 		<div className="cart-container">
 			<NavBar />
@@ -75,7 +88,17 @@ const Cart = () => {
 								$ 90
 							</span>
 						</div>
-						<button> CHECKOUT NOW</button>
+						<StripeCheckout
+							name="Charles Shop"
+							billingAddress
+							shippingAddress
+							description={`Your total is $${total}`}
+							amount={total * 100}
+							token={onToken}
+							stripeKey={stripe_key}
+						>
+							<button> Checkout now </button>
+						</StripeCheckout>
 					</div>
 				</div>
 			</div>
