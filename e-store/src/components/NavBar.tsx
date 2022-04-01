@@ -2,12 +2,12 @@ import React from 'react';
 import './NavBar.scss';
 import SearchIcon from '@mui/icons-material/Search';
 import { Search } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Badge from '@mui/material/Badge';
 import { makeStyles } from '@mui/styles';
 import { useSelector } from 'react-redux';
 import { cartSelector } from '../redux/cart/cartSlice';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
 	badge: {
@@ -34,8 +34,12 @@ const NavBar = () => {
 					<h1>SHOP</h1>
 				</div>
 				<div className="navbar__wrapper--right">
-					<div className="navbar__wrapper--right__menu">REGISTER</div>
-					<div className="navbar__wrapper--right__menu">SIGN IN</div>
+					<div className="navbar__wrapper--right__menu">
+						<Link to="/register">REGISTER</Link>
+					</div>
+					<div className="navbar__wrapper--right__menu">
+						<Link to="/login">SIGN IN</Link>
+					</div>
 					<div className="navbar__wrapper--right__menu">
 						<Link to={'/cart'}>
 							<Badge
