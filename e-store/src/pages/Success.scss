@@ -1,0 +1,22 @@
+.success-container {
+	display: flex;
+
+	justify-content: center;
+	align-items: center;
+	font-size: 3rem;
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		&--title {
+			font-weight: 500;
+			font-size: 4rem;
+		}
+		h3 a {
+			color: blue;
+			text-decoration: underline;
+		}
+	}
+}
