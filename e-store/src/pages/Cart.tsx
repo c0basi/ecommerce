@@ -9,6 +9,7 @@ import { cartSelector } from '../redux/cart/cartSlice';
 import { useNavigate } from 'react-router-dom';
 import './Cart.scss';
 import StripeCheckout, { Token } from 'react-stripe-checkout';
+import { Link } from 'react-router-dom';
 import { userRequest } from '../utils/requestMethods';
 
 const Cart = () => {
@@ -50,7 +51,9 @@ const Cart = () => {
 			<div className="cart-container__wrapper">
 				<h1 className="cart-container__wrapper--title">YOUR BAG</h1>
 				<div className="cart-container__wrapper--top">
-					<button className="continue-button">CONTINUE SHOPPING</button>
+					<Link to="/products" className="continue-button">
+						CONTINUE SHOPPING
+					</Link>
 					<div className="cart-container__wrapper--top__texts">
 						<span>Shopping Bag({quantity})</span> <span>Your Wishlist(0)</span>
 					</div>
