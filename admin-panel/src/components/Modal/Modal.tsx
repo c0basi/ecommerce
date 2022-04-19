@@ -3,7 +3,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { styled } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { IconButton, styled } from '@mui/material';
 
 interface ModalProps {
 	children: React.ReactNode;
@@ -33,7 +34,17 @@ export default function BasicModal({ children }: ModalProps) {
 
 	return (
 		<div>
-			<Button onClick={handleOpen}>Book Now</Button>
+			{/* Chage this to hamburger */}
+			<IconButton
+				size="large"
+				edge="start"
+				color="inherit"
+				aria-label="open drawer"
+				onClick={handleOpen}
+				sx={{ mr: 1, ml: 1 }}
+			>
+				<MenuIcon />
+			</IconButton>
 			<Modal
 				open={open}
 				onClose={handleClose}

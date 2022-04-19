@@ -29,7 +29,7 @@
 		li {
 			padding: 0.5rem;
 			display: flex;
-
+			cursor: pointer;
 			align-items: center;
 
 			&:hover {
@@ -63,9 +63,9 @@
 	}
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 650px) {
 	.sidebar__center {
-		padding-left: 0;
+		padding-left: 0.3rem;
 	}
 
 	.sidebar__top--logo {
