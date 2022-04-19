@@ -1,0 +1,26 @@
+.sidebar {
+	flex: 1;
+	border-right: 0.5px solid rgb(226, 220, 220);
+	min-height: 100vh;
+	background-color: white; // darkmode later
+
+	&__top {
+		height: 5rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&--logo {
+			font-size: 2rem;
+			font-weight: bold;
+			color: #6439ff;
+		}
+	}
+	&__center {
+		padding-left: 1.2rem;
+	}
+
+	hr {
+		height: 0;
+		border: 0.5px solid rgb(226, 220, 220);
+	}
+}
