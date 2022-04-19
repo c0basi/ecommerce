@@ -1,13 +1,23 @@
-import React from 'react';
 import BasicModal from '../../components/Modal/Modal';
 import Sidebar from '../../components/sidebar/Sidebar';
 import SidebarMaterial from '../../components/sidebarMaterialUi/SidebarMaterial';
+import React, { useState, useEffect } from 'react';
 import './Home.scss';
 
 const Home = () => {
+	const [isDesktop, setDesktop] = useState(window.innerWidth > 650);
+
+	const updateMedia = () => {
+		setDesktop(window.innerWidth > 700);
+	};
+
+	useEffect(() => {
+		window.addEventListener('resize', updateMedia);
+		return () => window.removeEventListener('resize', updateMedia);
+	});
 	return (
 		<div className="home">
-			{/* <Sidebar /> */}
+			{isDesktop && <Sidebar />}
 			<div className="home__container">
 				<div className="hamburger_for_dash">
 					<BasicModal>

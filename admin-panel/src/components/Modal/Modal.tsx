@@ -40,7 +40,7 @@ export default function BasicModal({ children }: ModalProps) {
 				aria-labelledby="modal-modal-title"
 				aria-describedby="modal-modal-description"
 			>
-				<Box width={'30%'} height={'100vh'} overflow={'scroll'}>
+				<Box width={'40%'} height={'100vh'} overflow={'scroll'}>
 					{children}
 				</Box>
 			</Modal>
