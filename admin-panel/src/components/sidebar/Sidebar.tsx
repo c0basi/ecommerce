@@ -12,6 +12,10 @@ import StorefrontIcon from '@mui/icons-material/Storefront';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import SettingsSystemDaydreamIcon from '@mui/icons-material/SettingsSystemDaydream';
 import './Sidebar.scss';
+import { Switch } from '@mui/material';
+import ModeNightIcon from '@mui/icons-material/ModeNight';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
 
 const Sidebar = () => {
 	return (
@@ -22,10 +26,12 @@ const Sidebar = () => {
 			<hr />
 			<div className="sidebar__center">
 				<ul>
+					<p className="title">MAIN</p>
 					<li>
 						<DashboardIcon />
 						<span>Dashboard</span>
 					</li>
+					<p className="title">LISTS</p>
 					<li>
 						<PersonIcon />
 						<span>Users</span>
@@ -42,6 +48,7 @@ const Sidebar = () => {
 						<LocalShippingIcon />
 						<span>Delivery</span>
 					</li>
+					<p className="title">USEFUL</p>
 					<li>
 						<QueryStatsIcon />
 						<span>Stats</span>
@@ -50,6 +57,7 @@ const Sidebar = () => {
 						<NotificationsIcon />
 						<span>Notifications</span>
 					</li>
+					<p className="title">SERVICE</p>
 					<li>
 						<SettingsSystemDaydreamIcon />
 						<span>System Health</span>
@@ -62,6 +70,7 @@ const Sidebar = () => {
 						<SettingsIcon />
 						<span>Settings</span>
 					</li>
+					<p className="title">USER</p>
 					<li>
 						<FaceIcon />
 						<span>Profile</span>
@@ -70,9 +79,17 @@ const Sidebar = () => {
 						<LogoutIcon />
 						<span>Logout</span>
 					</li>
+					<p className="title">THEME</p>
 				</ul>
 			</div>
-			<div className="sidebar__bottom"></div>
+			<div className="sidebar__bottom">
+				<ListItemButton>
+					<ListItemIcon>
+						<ModeNightIcon />
+					</ListItemIcon>
+					<Switch />
+				</ListItemButton>
+			</div>
 		</div>
 	);
 };
