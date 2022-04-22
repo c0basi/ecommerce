@@ -5,7 +5,7 @@
 	padding: 1rem;
 	box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
 	border-radius: 10px;
-	height: fit-content;
+	height: 12rem;
 
 	&__left,
 	&__right {
@@ -44,7 +44,18 @@
 		}
 
 		svg {
-			font-size: 2.2rem;
+			font-size: 2.8rem;
 		}
 	}
+
+	.widget__right .icon {
+		font-size: 1.8rem;
+		padding: 0.5rem;
+		align-self: flex-end;
+		// background-color: rgb(165, 32, 165);
+	}
+}
+
+svg {
+	cursor: pointer;
 }
