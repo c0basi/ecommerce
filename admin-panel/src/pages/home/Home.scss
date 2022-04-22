@@ -3,5 +3,11 @@
 
 	&__container {
 		flex: 6;
+
+		.widgets {
+			padding: 2rem;
+			display: flex;
+			gap: 2rem;
+		}
 	}
 }

@@ -3,6 +3,7 @@ import Sidebar from '../../components/sidebar/Sidebar';
 import SidebarMaterial from '../../components/sidebarMaterialUi/SidebarMaterial';
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar/Navbar';
+import Widget from '../../components/widget/Widget';
 import './Home.scss';
 
 const Home = () => {
@@ -30,6 +31,12 @@ const Home = () => {
 				</div> */}
 				<Navbar />
 				home container
+				<div className="widgets">
+					<Widget />
+					<Widget />
+					<Widget />
+					<Widget />
+				</div>
 			</div>
 		</div>
 	);
