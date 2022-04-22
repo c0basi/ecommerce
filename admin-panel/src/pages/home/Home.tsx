@@ -6,7 +6,7 @@ import Navbar from '../../components/navbar/Navbar';
 import './Home.scss';
 
 const Home = () => {
-	const [isDesktop, setDesktop] = useState(window.innerWidth > 700);
+	const [isDesktop, setDesktop] = useState(window.innerWidth > 650);
 
 	const updateMedia = () => {
 		setDesktop(window.innerWidth > 700);
@@ -16,6 +16,9 @@ const Home = () => {
 		window.addEventListener('resize', updateMedia);
 		return () => window.removeEventListener('resize', updateMedia);
 	});
+	console.log(isDesktop);
+	console.log(window.innerWidth);
+
 	return (
 		<div className="home">
 			{isDesktop && <Sidebar />}

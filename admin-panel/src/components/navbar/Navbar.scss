@@ -51,8 +51,15 @@
 	display: none;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
+	.navbar {
+		justify-items: space-between;
+	}
 	.hamburger_for_dash {
 		display: block;
+	}
+
+	.navbar__wrapper--items {
+		display: none;
 	}
 }
