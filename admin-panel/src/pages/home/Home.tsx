@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import Widget from '../../components/widget/Widget';
 import './Home.scss';
+import Featured from '../../components/featured/Featured';
+import Chart from '../../components/charts/Chart';
 
 const Home = () => {
 	const [isDesktop, setDesktop] = useState(window.innerWidth > 650);
@@ -36,6 +38,10 @@ const Home = () => {
 					<Widget type="order" />
 					<Widget type="earnings" />
 					<Widget type="balance" />
+				</div>
+				<div className="charts">
+					<Featured />
+					<Chart />
 				</div>
 			</div>
 		</div>
