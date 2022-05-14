@@ -7,6 +7,7 @@ import Widget from '../../components/widget/Widget';
 import './Home.scss';
 import Featured from '../../components/featured/Featured';
 import Chart from '../../components/charts/Chart';
+import Table from '../../components/table/Table';
 
 const Home = () => {
 	const [isDesktop, setDesktop] = useState(window.innerWidth > 650);
@@ -42,6 +43,10 @@ const Home = () => {
 				<div className="charts">
 					<Featured />
 					<Chart />
+				</div>
+				<div className="listContainer">
+					<div className="listContainer--title">Latest Transactions</div>
+					<Table />
 				</div>
 			</div>
 		</div>
