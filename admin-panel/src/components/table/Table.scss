@@ -1,0 +1,27 @@
+.table {
+	.tableCell,
+	.productWrapper {
+		font-size: 1.3rem;
+	}
+	.productWrapper {
+		display: flex;
+		align-items: center;
+
+		img {
+			height: 3rem;
+			width: 3rem;
+			margin-right: 1rem;
+		}
+	}
+	.status {
+		padding: 0.6rem;
+		&.Approved {
+			color: green;
+			background-color: rgba(0, 128, 0, 0.212);
+		}
+		&.Pending {
+			color: goldenrod;
+			background-color: rgba(218, 165, 32, 0.247);
+		}
+	}
+}
