@@ -2,6 +2,7 @@ import React from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import './Featured.scss';
 
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -27,6 +28,20 @@ const Featured = () => {
 						<div className="itemTitle">Target</div>
 						<div className="itemResult">
 							<ArrowDropDownIcon />
+							<div className="resultAmount">$12.4k</div>
+						</div>
+					</div>
+					<div className="item">
+						<div className="itemTitle">Last Week</div>
+						<div className="itemResult negative">
+							<ArrowDropDownIcon />
+							<div className="resultAmount">$12.4k</div>
+						</div>
+					</div>
+					<div className="item">
+						<div className="itemTitle">Last Month</div>
+						<div className="itemResult positive">
+							<ArrowDropUpIcon />
 							<div className="resultAmount">$12.4k</div>
 						</div>
 					</div>

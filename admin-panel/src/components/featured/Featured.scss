@@ -43,5 +43,29 @@
 			color: gray;
 			text-align: center;
 		}
+		&--summary {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.item {
+				text-align: center;
+			}
+			.itemTitle {
+				font-size: 1.4rem;
+				color: gray;
+			}
+			.itemResult {
+				display: flex;
+				align-items: center;
+				font-size: 1.5rem;
+				&.positive {
+					color: green;
+				}
+				&.negative {
+					color: red;
+				}
+			}
+		}
 	}
 }
