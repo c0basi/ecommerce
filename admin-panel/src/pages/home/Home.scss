@@ -1,24 +1,18 @@
 .home {
 	display: flex;
 	width: 100%;
-	overflow-x: hidden;
+	// overflow-x: hidden;
 	max-width: 100vw;
 
 	&__container {
 		flex: 6;
 
-		.widgets,
-		.charts {
-			max-width: 90vw;
-			padding: 2rem;
-			display: flex;
-			gap: 2rem;
-		}
 		.widgets {
 			flex-wrap: wrap;
 		}
 		.charts {
 			padding: 0.5rem 2rem;
+			width: 100%;
 		}
 		.listContainer {
 			-webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);

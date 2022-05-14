@@ -8,3 +8,8 @@ export interface Data {
 	method: string;
 	status: 'Approved' | 'Pending';
 }
+
+export interface chartData {
+	name: string;
+	'Active User': number;
+}

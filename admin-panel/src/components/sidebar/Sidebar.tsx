@@ -16,6 +16,14 @@ import { Switch } from '@mui/material';
 import ModeNightIcon from '@mui/icons-material/ModeNight';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import TimelineIcon from '@mui/icons-material/Timeline';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import SummarizeIcon from '@mui/icons-material/Summarize';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import ForumIcon from '@mui/icons-material/Forum';
+import ReportIcon from '@mui/icons-material/Report';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
 
 const Sidebar = () => {
 	return (
@@ -26,12 +34,20 @@ const Sidebar = () => {
 			<hr />
 			<div className="sidebar__center">
 				<ul>
-					<p className="title">MAIN</p>
+					<p className="title">Dashboard</p>
 					<li>
 						<DashboardIcon />
-						<span>Dashboard</span>
+						<span>Home</span>
 					</li>
-					<p className="title">LISTS</p>
+					<li>
+						<TimelineIcon />
+						<span>Analytics</span>
+					</li>
+					<li>
+						<TrendingUpIcon />
+						<span>Sales</span>
+					</li>
+					<p className="title">Quick Menu</p>
 					<li>
 						<PersonIcon />
 						<span>Users</span>
@@ -42,33 +58,37 @@ const Sidebar = () => {
 					</li>
 					<li>
 						<PaymentIcon />
-						<span>Orders</span>
+						<span>Transactins</span>
 					</li>
 					<li>
-						<LocalShippingIcon />
-						<span>Delivery</span>
+						<SummarizeIcon />
+						<span>Reports</span>
 					</li>
-					<p className="title">USEFUL</p>
+					<p className="title">Notifications</p>
+					<li>
+						<MailOutlineIcon />
+						<span>Mail</span>
+					</li>
+					<li>
+						<DynamicFeedIcon />
+						<span>Feedback</span>
+					</li>
+					<li>
+						<ForumIcon />
+						<span>Messages</span>
+					</li>
+					<p className="title">Staff</p>
+					<li>
+						<ManageAccountsIcon />
+						<span>Manage</span>
+					</li>
 					<li>
 						<QueryStatsIcon />
-						<span>Stats</span>
+						<span>Analytics</span>
 					</li>
 					<li>
-						<NotificationsIcon />
-						<span>Notifications</span>
-					</li>
-					<p className="title">SERVICE</p>
-					<li>
-						<SettingsSystemDaydreamIcon />
-						<span>System Health</span>
-					</li>
-					<li>
-						<PsychologyIcon />
-						<span>Logs</span>
-					</li>
-					<li>
-						<SettingsIcon />
-						<span>Settings</span>
+						<ReportIcon />
+						<span>Reports</span>
 					</li>
 					<p className="title">USER</p>
 					<li>
@@ -79,16 +99,7 @@ const Sidebar = () => {
 						<LogoutIcon />
 						<span>Logout</span>
 					</li>
-					<p className="title">THEME</p>
 				</ul>
-			</div>
-			<div className="sidebar__bottom">
-				<ListItemButton>
-					<ListItemIcon>
-						<ModeNightIcon />
-					</ListItemIcon>
-					<Switch />
-				</ListItemButton>
 			</div>
 		</div>
 	);
