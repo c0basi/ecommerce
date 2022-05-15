@@ -65,7 +65,7 @@ const Sidebar = () => {
 					</Link>
 					<li>
 						<PaymentIcon />
-						<span>Transactins</span>
+						<span>Transactions</span>
 					</li>
 					<li>
 						<SummarizeIcon />
