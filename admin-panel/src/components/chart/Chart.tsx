@@ -14,7 +14,7 @@ interface chartProps {
 	title: string;
 	dataKey: string;
 	data: chartData[];
-	grid: boolean;
+	grid?: boolean;
 }
 const chart = ({ title, dataKey, grid, data }: chartProps) => {
 	return (

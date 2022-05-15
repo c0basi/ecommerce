@@ -9,7 +9,17 @@ export interface Data {
 	status: 'Approved' | 'Pending';
 }
 
-export interface chartData {
+export interface userData {
 	name: string;
 	'Active User': number;
+}
+
+export interface ProductData {
+	name: string;
+	Sales: number;
+}
+export interface chartData {
+	name: string;
+	Sales?: number;
+	'Active User'?: number;
 }

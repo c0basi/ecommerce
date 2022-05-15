@@ -7,6 +7,7 @@ import NewUser from '../pages/new/NewUser';
 import User from '../pages/User/User';
 import Layout from '../layout/Layout';
 import ProductList from '../pages/productList/ProductList';
+import Product from '../pages/product/Product';
 
 const AppRouter = () => {
 	return (
@@ -21,7 +22,7 @@ const AppRouter = () => {
 				</Route>
 				<Route path="products">
 					<Route index element={<ProductList />} />
-					<Route path=":productsId" element={<User />} />
+					<Route path=":productsId" element={<Product />} />
 					<Route path="new" element={<NewUser />} />
 				</Route>
 
