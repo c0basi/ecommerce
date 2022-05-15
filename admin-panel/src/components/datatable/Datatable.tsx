@@ -60,7 +60,7 @@ const Datatable = () => {
 			renderCell: (params) => {
 				return (
 					<div className="cellActions">
-						<Link to={'/user/' + params.row.id} className="editButton">
+						<Link to={'/users/' + params.row.id} className="editButton">
 							Edit
 						</Link>
 						<div
