@@ -22,7 +22,7 @@
 		gap: 1.5rem;
 		&--left {
 			flex: 3;
-			width: 100%;
+			max-width: 100%;
 		}
 		&--right {
 			flex: 1;

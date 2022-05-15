@@ -8,6 +8,7 @@ import User from '../pages/User/User';
 import Layout from '../layout/Layout';
 import ProductList from '../pages/productList/ProductList';
 import Product from '../pages/product/Product';
+import NewProduct from '../pages/newProduct/NewProduct';
 
 const AppRouter = () => {
 	return (
@@ -23,7 +24,7 @@ const AppRouter = () => {
 				<Route path="products">
 					<Route index element={<ProductList />} />
 					<Route path=":productsId" element={<Product />} />
-					<Route path="new" element={<NewUser />} />
+					<Route path="new" element={<NewProduct />} />
 				</Route>
 
 				{/* <Route path="products">
