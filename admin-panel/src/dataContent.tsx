@@ -40,6 +40,34 @@ export const userColumns: GridColDef[] = [
 	},
 ];
 
+export const productColumns: GridColDef[] = [
+	{ field: 'id', headerName: 'ID', width: 90 },
+	{
+		field: 'product',
+		headerName: 'Product',
+		width: 200,
+		renderCell: (params) => {
+			return (
+				<div className="cellWithImg">
+					<img className="cellImg" src={params.row.img} alt="avatar" />
+					{params.row.name}
+				</div>
+			);
+		},
+	},
+	{ field: 'stock', headerName: 'Stock', width: 200 },
+	{
+		field: 'status',
+		headerName: 'Status',
+		width: 120,
+	},
+	{
+		field: 'price',
+		headerName: 'Price',
+		width: 160,
+	},
+];
+
 //temporary data
 export const userRows = [
 	{
