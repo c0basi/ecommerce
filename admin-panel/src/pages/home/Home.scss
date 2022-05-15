@@ -7,8 +7,9 @@
 	&__container {
 		flex: 6;
 
-		.widgets {
-			flex-wrap: wrap;
+		.homeWidgets {
+			display: flex;
+			margin: 2rem;
 		}
 		.charts {
 			padding: 0.5rem 2rem;

@@ -7,6 +7,7 @@ import {
 	Tooltip,
 	ResponsiveContainer,
 } from 'recharts';
+import './Chart.scss';
 import { chartData } from '../../types/DataTypes';
 
 interface chartProps {

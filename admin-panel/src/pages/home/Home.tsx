@@ -10,6 +10,8 @@ import Chart from '../../components/chart/Chart';
 import TableContent from '../../components/table/Table';
 import FeaturedInfo from '../../components/featuredInfo.tsx/FeaturedInfo';
 import { userData } from '../../data';
+import LargeWidget from '../../components/largeWidget/LargeWidget';
+import SmallWidget from '../../components/smallWidget/SmallWidget';
 
 const Home = () => {
 	const [isDesktop, setDesktop] = useState(window.innerWidth > 650);
@@ -37,6 +39,10 @@ const Home = () => {
 				<Navbar />
 				home container
 				<FeaturedInfo />
+				<div className="homeWidgets">
+					<SmallWidget />
+					<LargeWidget />
+				</div>
 				<div className="widgets">
 					{/* <Widget type="user" />
 					<Widget type="order" />
