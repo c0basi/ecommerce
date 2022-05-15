@@ -34,14 +34,14 @@
 		align-items: center;
 		gap: 1.3rem;
 
-		.viewButton,
+		.editButton,
 		.deleteButton {
 			padding: 0.2rem 0.5rem;
 			border-radius: 6px;
 			cursor: pointer;
 		}
 
-		.viewButton {
+		.editButton {
 			color: darkblue;
 			border: 1px solid rgba(0, 0, 139, 0.212);
 		}

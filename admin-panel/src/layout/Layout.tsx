@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar/Navbar';
 import Sidebar from '../components/sidebar/Sidebar';
+import './Layout.scss';
 
 interface LayoutProps {
 	children: React.ReactNode;
@@ -20,10 +21,12 @@ const Layout = (props: LayoutProps) => {
 	console.log(isDesktop);
 	console.log(window.innerWidth);
 	return (
-		<div>
+		<div className="layout">
 			{isDesktop && <Sidebar />}
-			<Navbar />
-			{props.children}
+			<div className="layoutContainer">
+				<Navbar />
+				{props.children}
+			</div>
 		</div>
 	);
 };

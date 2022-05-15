@@ -1,4 +1,6 @@
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { Link } from 'react-router-dom';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 export const userColumns: GridColDef[] = [
 	{ field: 'id', headerName: 'ID', width: 70 },
 	{
@@ -20,9 +22,9 @@ export const userColumns: GridColDef[] = [
 		width: 230,
 	},
 	{
-		field: 'age',
-		headerName: 'Age',
-		width: 70,
+		field: 'transaction',
+		headerName: 'Transaction Volume',
+		width: 160,
 	},
 	{
 		field: 'status',
@@ -46,7 +48,7 @@ export const userRows = [
 		img: 'https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
 		status: 'active',
 		email: '1snow@gmail.com',
-		age: 35,
+		transaction: '$120.00',
 	},
 	{
 		id: 2,
@@ -54,7 +56,7 @@ export const userRows = [
 		img: 'https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
 		email: '2snow@gmail.com',
 		status: 'passive',
-		age: 42,
+		transaction: '$120.00',
 	},
 	{
 		id: 3,
@@ -62,7 +64,7 @@ export const userRows = [
 		img: 'https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
 		email: '3snow@gmail.com',
 		status: 'pending',
-		age: 45,
+		transaction: '$120.00',
 	},
 	{
 		id: 4,
@@ -70,7 +72,7 @@ export const userRows = [
 		img: 'https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
 		email: '4snow@gmail.com',
 		status: 'active',
-		age: 16,
+		transaction: '$120.00',
 	},
 	{
 		id: 5,
@@ -78,7 +80,7 @@ export const userRows = [
 		img: 'https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
 		email: '5snow@gmail.com',
 		status: 'passive',
-		age: 22,
+		transaction: '$120.00',
 	},
 	{
 		id: 6,
@@ -86,7 +88,7 @@ export const userRows = [
 		img: 'https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
 		email: '6snow@gmail.com',
 		status: 'active',
-		age: 15,
+		transaction: '$120.00',
 	},
 	{
 		id: 7,
@@ -94,7 +96,7 @@ export const userRows = [
 		img: 'https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
 		email: '7snow@gmail.com',
 		status: 'passive',
-		age: 44,
+		transaction: '$120.00',
 	},
 	{
 		id: 8,
@@ -102,7 +104,7 @@ export const userRows = [
 		img: 'https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
 		email: '8snow@gmail.com',
 		status: 'active',
-		age: 36,
+		transaction: '$120.00',
 	},
 	{
 		id: 9,
@@ -110,7 +112,7 @@ export const userRows = [
 		img: 'https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
 		email: 'snow@gmail.com',
 		status: 'pending',
-		age: 65,
+		transaction: '$120.00',
 	},
 	{
 		id: 10,
@@ -118,6 +120,6 @@ export const userRows = [
 		img: 'https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
 		email: 'snow@gmail.com',
 		status: 'active',
-		age: 65,
+		transaction: '$120.00',
 	},
 ];

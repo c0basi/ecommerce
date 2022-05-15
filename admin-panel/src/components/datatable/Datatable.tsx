@@ -2,22 +2,10 @@ import React from 'react';
 import './Datatable.scss';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { userColumns, userRows } from '../../dataContent';
+import { Link } from 'react-router-dom';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { useState } from 'react';
 
-const actionColumn: GridColDef[] = [
-	{
-		field: 'action',
-		headerName: 'Action',
-		width: 200,
-		renderCell: (params) => {
-			return (
-				<div className="cellActions">
-					<div className="viewButton">View</div>
-					<div className="deleteButton">Delete</div>
-				</div>
-			);
-		},
-	},
-];
 // const columns: GridColDef[] = [
 // 	{ field: 'id', headerName: 'ID', width: 70 },
 // 	{ field: 'firstName', headerName: 'First name', width: 130 },
@@ -58,11 +46,58 @@ const actionColumn: GridColDef[] = [
 // ];
 
 const Datatable = () => {
+	const [data, setData] = useState(userRows);
+
+	const handleDelete = (id: number) => {
+		setData(data.filter((item) => item.id !== id));
+	};
+
+	const actionColumn: GridColDef[] = [
+		{
+			field: 'action',
+			headerName: 'Action',
+			width: 200,
+			renderCell: (params) => {
+				return (
+					<div className="cellActions">
+						<Link to={'/user/' + params.row.id} className="editButton">
+							Edit
+						</Link>
+						<div
+							className="deleteButton"
+							onClick={(e: React.MouseEvent) => handleDelete(params.row.id)}
+						>
+							Delete
+						</div>
+					</div>
+				);
+			},
+		},
+		// {
+		//     field: "action",
+		//     headerName: "Action",
+		//     width: 150,
+		//     renderCell: (params) => {
+		//       return (
+		//         <>
+		//           <Link to={"/user/" + params.row.id}>
+		//             <button className="userListEdit">Edit</button>
+		//           </Link>
+		//           <DeleteOutlineIcon
+		//             className="userListDelete"
+		//             onClick={(e: React.MouseEvent) => handleDelete(params.row.id)}
+		//           />
+		//         </>
+		//       );
+		//     },
+		//   },
+	];
+
 	return (
 		<div className="datatable">
 			<DataGrid
 				sx={{ fontSize: '1.3rem' }}
-				rows={userRows}
+				rows={data}
 				columns={userColumns.concat(actionColumn)}
 				pageSize={5}
 				rowsPerPageOptions={[5]}

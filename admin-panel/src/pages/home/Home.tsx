@@ -8,7 +8,7 @@ import './Home.scss';
 import Featured from '../../components/featured/Featured';
 import Chart from '../../components/chart/Chart';
 import TableContent from '../../components/table/Table';
-import FeaturedInfo from '../../components/featuredInfo.tsx/FeaturedInfo';
+import FeaturedInfo from '../../components/featuredInfo/FeaturedInfo';
 import { userData } from '../../data';
 import LargeWidget from '../../components/largeWidget/LargeWidget';
 import SmallWidget from '../../components/smallWidget/SmallWidget';
@@ -29,39 +29,13 @@ const Home = () => {
 
 	return (
 		<div className="home">
-			{isDesktop && <Sidebar />}
-			<div className="home__container">
-				{/* <div className="hamburger_for_dash">
-					<BasicModal>
-						<Sidebar />
-					</BasicModal>
-				</div> */}
-				<Navbar />
+			{/* {isDesktop && <Sidebar />} */}
+			<div className="home--container">
 				home container
 				<FeaturedInfo />
 				<div className="homeWidgets">
 					<SmallWidget />
 					<LargeWidget />
-				</div>
-				<div className="widgets">
-					{/* <Widget type="user" />
-					<Widget type="order" />
-					<Widget type="earnings" />
-					<Widget type="balance" /> */}
-				</div>
-				<Chart
-					data={userData}
-					title=" User Analytics"
-					dataKey="Active User"
-					grid
-				/>
-				<div className="charts">
-					{/* <Featured />
-					<Chart /> */}
-				</div>
-				<div className="listContainer">
-					<div className="listContainer--title">Latest Transactions</div>
-					<TableContent />
 				</div>
 			</div>
 		</div>
