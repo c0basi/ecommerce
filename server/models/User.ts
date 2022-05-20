@@ -4,6 +4,7 @@ export interface User extends Document {
 	email: string;
 	password: string;
 	isAdmin: Boolean;
+	img: string;
 }
 
 const UserSchema = new Schema<User, Model<User>>(
@@ -15,6 +16,7 @@ const UserSchema = new Schema<User, Model<User>>(
 			type: Boolean,
 			default: false,
 		},
+		img: { type: String, required: false },
 	},
 	{ timestamps: true }
 );

@@ -9,31 +9,42 @@ import Layout from '../layout/Layout';
 import ProductList from '../pages/productList/ProductList';
 import Product from '../pages/product/Product';
 import NewProduct from '../pages/newProduct/NewProduct';
+import { useSelector } from 'react-redux';
+import { userSelector } from '../redux/user/userSlice';
 
 const AppRouter = () => {
+	const getUser = useSelector(userSelector);
+	const admin = getUser.currentUser?.isAdmin;
 	return (
-		<Layout>
+		<>
 			<Routes>
-				<Route path="/" element={<Home />} />
 				<Route path="login" element={<Login />} />
-				<Route path="users">
-					<Route index element={<List />} />
-					<Route path=":userId" element={<User />} />
-					<Route path="new" element={<NewUser />} />
-				</Route>
-				<Route path="products">
-					<Route index element={<ProductList />} />
-					<Route path=":productsId" element={<Product />} />
-					<Route path="new" element={<NewProduct />} />
-				</Route>
+			</Routes>
+			{admin && (
+				<Layout>
+					<Routes>
+						<Route path="/" element={<Home />} />
 
-				{/* <Route path="products">
+						<Route path="users">
+							<Route index element={<List />} />
+							<Route path=":userId" element={<User />} />
+							<Route path="new" element={<NewUser />} />
+						</Route>
+						<Route path="products">
+							<Route index element={<ProductList />} />
+							<Route path=":productsId" element={<Product />} />
+							<Route path="new" element={<NewProduct />} />
+						</Route>
+
+						{/* <Route path="products">
 					<Route index element={<List />} />
 					<Route path=":productId" element={<Single />} />
 					<Route path="new" element={<New />} />
 				</Route> */}
-			</Routes>
-		</Layout>
+					</Routes>
+				</Layout>
+			)}
+		</>
 	);
 };
 

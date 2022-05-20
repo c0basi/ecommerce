@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { useCallback } from 'react';
-import { publicRequest } from '../../utils/requestMethods';
-
+// import { publicRequest } from '../../utils/requestMethods';
+import { publicRequest, userRequest } from '../apiCall';
 interface loginDetails {
 	username: string;
 	password: string;
@@ -26,6 +26,22 @@ export const login = createAsyncThunk(
 	}
 );
 
+export const getAllUsers = createAsyncThunk('/users', async () => {
+	console.log('getting users ');
+
+	try {
+		console.log('working on it ');
+		const res = await userRequest.get('/users/');
+		console.log('got it ');
+		const data = res.data;
+		console.log(data);
+		return data;
+	} catch (err) {
+		console.log(err);
+		throw new Error('Something went wrong...');
+	}
+});
+
 // export const getProduct = createAsyncThunk(
 // 	'/product/find?id',
 // 	async (id: string) => {
@@ -43,3 +59,4 @@ export const login = createAsyncThunk(
 // 		}
 // 	}
 // );
+export {};

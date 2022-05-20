@@ -23,3 +23,15 @@ export interface chartData {
 	Sales?: number;
 	'Active User'?: number;
 }
+
+export interface User {
+	_id: string;
+	username: string;
+	email: string;
+	password: string;
+	isAdmin: boolean;
+	img: string;
+	createdAt: Date;
+	updatedAt: Date;
+	__v: number;
+}
